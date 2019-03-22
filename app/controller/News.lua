@@ -3,7 +3,7 @@
 -- local _M = Controller:new()
 local _M = {}
 
-function _M:index()
+function _M:list()
     self.ctx.body = 'Hello World'
     ngx.say("home controller: hello world")
 end
