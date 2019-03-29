@@ -8,4 +8,8 @@ function _M:index()
     ngx.say("home controller: hello world")
 end
 
+function _M:edit()
+    ngx.say("post controller: edit")
+end
+
 return _M

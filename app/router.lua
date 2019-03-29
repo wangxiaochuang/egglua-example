@@ -2,14 +2,19 @@ return function(app)
     local router = app.router
     local controller = app.controller
     
-    router:get{path='/home', handler=controller.Home.index}
-    router:get{path='/home/a/b', handler=controller.Home.index}
-    router:get{path='/home/a/:home(^abc)', handler=controller.Home.index}
-    router:get{path='/:home(^abc)', handler=controller.Home.index}
-    router:get{path='/home/:key/:name(^test_[%w]+)', handler=controller.Home.index}
-    router:get{path='/home/id/:key', handler=controller.Home.index}
-    router:get{path='/news', handler=controller.Home.index}
+    -- router:get{path='/home', handler=controller.Home.index}
+    router:get('home', '/home', controller.Home.index)
+    router:get('/home/a/b', controller.Home.index)
+    router:get('/home/a/:home(^abc)', controller.Home.index)
+    router:get('/:home(^abc)', controller.Home.index)
+    router:get('/home/:key/:name(^test_[%w]+)', controller.Home.index)
+    router:get('/home/id/:key', controller.Home.index)
 
-    router:resources{path="/api/posts", handler=controller.Posts}
-    router:resources{path="/api/v1/users", handler=controller.Users}
+    local auth = {
+        index = {"auth", {}},
+    }
+    router:get('/news', {"auth", {}}, controller.Home.index)
+
+    router:resources("/api/posts", auth, controller.Posts)
+    -- router:resources("/api/v1/users", controller.Users)
 end
