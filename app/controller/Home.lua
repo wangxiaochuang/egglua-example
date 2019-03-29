@@ -4,8 +4,8 @@
 local _M = {}
 
 function _M:index()
-    -- self.ctx.body = 'Hello World'
-    ngx.say("home controller: hello world")
+    self.ctx.status = 998
+    self.ctx.body = 'Hello World'
 end
 
 return _M
