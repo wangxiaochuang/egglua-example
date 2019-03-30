@@ -1,3 +1,4 @@
 return {
-    middleware = {}
+    middleware = {},
+    debug = true
 }
