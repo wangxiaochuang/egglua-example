@@ -1,11 +1,6 @@
--- local Controller = require("egglua.index").Controller
-
--- local _M = Controller:new()
-local _M = {}
-
-function _M:list()
-    self.ctx.body = 'Hello World'
-    ngx.say("home controller: hello world")
-end
-
-return _M
+Controller {
+    list = function(this)
+        this.ctx.body = 'Hello World'
+        ngx.say("home controller: hello world")
+    end
+}
