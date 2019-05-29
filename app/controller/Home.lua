@@ -5,6 +5,7 @@ return Controller {
         this.ctx.status = 998
         local user = this.ctx.service.user.get(this, "jack")
         this.ctx.body = user
+        -- this.logger.error("home controller done")
     end
 }
 
