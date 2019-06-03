@@ -1,11 +1,19 @@
+local _M = {}
+
 local cjson = require "cjson"
 
-return Controller {
-    index = function(this)
-        this.ctx.status = 998
-        local user = this.ctx.service.user.get(this, "jack")
-        this.ctx.body = user
-        -- this.logger.error("home controller done")
-    end
-}
+function _M:index()
+    local userService = self.service.impl.user
+    local out = userService:get("jack")
+    self.ctx.body = out
+end
 
+return _M
+
+--[[
+return Controller()
+    index = function(self)
+        ... ...
+    end
+end
+]]--
